@@ -5,14 +5,16 @@ export const NavBar = () => {
     const navigate = useNavigate()
     return (
         <ul className="navbar">
-            <li className="navbar__item">
-                Navigation link
+            <li className="navbar__item" onClick={() => {
+                navigate('/events')
+            }}>
+                Events
             </li>
             <li className="navbar__item">
-                Navigation link
+                The Vibe Tribe!
             </li>
             <li className="navbar__item">
-                Navigation link
+                Get Help!
             </li>
             {
                 (localStorage.getItem("lu_token") !== null) ?

@@ -7,4 +7,27 @@
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: 2px solid #e08c0c;
+    /* Add a 2px solid border with a light gray color */
+    padding: 8px;
+    /* Add some padding to create space around the content */
+    text-align: center;
+    /* Center-align the text */
+    background-color: #fafafa;
+    /* Add a light gray background color */
+    border-radius: 30px;
+    /* Add rounded corners to create a cute box effect */
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* Add transition effects for hover */
+    margin: 10px;
+        /* Add margin to increase spacing between navbar items */
+}
+
+/* Add a hover effect to make the box pop a little on hover */
+.navbar__item:hover {
+    transform: scale(1.05);
+    /* Increase the size a bit on hover */
+    box-shadow: 0 0 10px rgba(4, 4, 4, 0.2);
+    /* Add a subtle shadow on hover */
 }
