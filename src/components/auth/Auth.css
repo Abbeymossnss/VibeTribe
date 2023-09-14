@@ -1,8 +1,13 @@
 .h1, h1 {
-    font-size: 2.5rem;
+/* figure out how to put ur logo here */
+    font-size: 3em;
+    font-weight: 50rem;
+    color:#3a074d;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 fieldset {
+
     min-width: 0;
     padding: 1rem 0;
     margin: 0;
@@ -11,11 +16,16 @@ fieldset {
 
 .form--login {
     display: inline-block;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
     margin: 0 auto;
     text-align: left;
 }
 
-.form--login > fieldset > input[type="email"],
+.form--login > fieldset > input[type="email"] 
+
+
+
 .form--login > fieldset > input[type="password"] {
     width: 25em;
 }
@@ -26,6 +36,7 @@ fieldset {
 }
 
 .form-control {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: block;
     width: 94%;
     height: calc(1.5em + .75rem + 2px);
@@ -49,20 +60,25 @@ fieldset {
 .form--login {
     background-size: cover;
     background-position-x: center;
-    background-image: url('./logo.png');
+    background-image: url('/Users/abbeymoss/Desktop/The Vibe Tribe/Screen Shot 2023-09-06 at 10.09.21 AM.png');
     z-index: 1;
     min-height: 25rem;
     min-width: 45rem;
     padding: 0 5rem;
-    background-color: hsla(0,0%,100%,0.75);
+    background-color: hsla(189, 27%, 85%, 0.75);
     background-blend-mode: overlay;
     background-repeat: no-repeat;
 }
 
-.button--close {
-    position: relative;
-    bottom: -2rem;
+/* Add this CSS code to your stylesheet */
+.custom-button {
+    background-color: #ee38d9;
+    /* Change this to your desired color */
+    color: #fff;
+    /* Text color */
+    /* You can add more styling properties here as needed */
 }
+
 
 .dialog {
     min-width: 15rem;
