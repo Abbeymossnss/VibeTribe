@@ -44,3 +44,17 @@ export const EditEvent = (event) => {
     })
 
 }
+
+export const deleteEvent = (eventId) => {
+    return fetch(`http://localhost:8000/events/${eventId}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to delete event");
+            }
+        });
+}
