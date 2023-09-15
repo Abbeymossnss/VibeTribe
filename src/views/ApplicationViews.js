@@ -4,6 +4,7 @@ import { Register } from "../components/auth/Register"
 import { Authorized } from "./Authorized"
 import { EventList } from "../components/event/EventList"
 import { EventForm } from "../components/event/EventForm"
+import { UpdateEvent } from "../components/event/UpdateEvent"
 import { useState, useEffect } from "react"
 import { getTags } from "../managers/TagManager"
 
@@ -25,8 +26,9 @@ export const ApplicationViews = ({setToken}) => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register setToken={setToken} />} />
             <Route element={<Authorized />}>
-            <Route path="/events" element={<EventList />} />
+            <Route path="/events" element={<EventList/>} />
             <Route path="/events/new/" element={<EventForm setToken={setToken} tags ={tags} />} />
+            <Route path="/events/:eventId" element={<UpdateEvent setToken={setToken} tags={tags} />} />
             </Route>
         </Routes>
     </>
