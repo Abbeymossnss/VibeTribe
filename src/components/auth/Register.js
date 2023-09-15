@@ -1,16 +1,19 @@
-import React, { useRef } from "react"
+import { useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { registerUser } from "../../managers/AuthManager"
 import "./Auth.css"
 
-export const Register = () => {
+export const Register = ({ setToken }) => {
     const firstName = useRef()
     const lastName = useRef()
+    const email = useRef()
     const username = useRef()
+    const imgUrl = useRef()
     const bio = useRef()
     const password = useRef()
     const verifyPassword = useRef()
     const passwordDialog = useRef()
+    const isStaff = useRef()
     const navigate = useNavigate()
 
     const handleRegister = (e) => {
@@ -21,16 +24,19 @@ export const Register = () => {
                 "username": username.current.value,
                 "first_name": firstName.current.value,
                 "last_name": lastName.current.value,
+                "email": email.current.value,
                 "bio": bio.current.value,
+                "img_url": imgUrl.current.value,
+                "isStaff": isStaff.current.checked,
                 "password": password.current.value
             }
 
             registerUser(newUser)
                 .then(res => {
-                    if ("token" in res) {
-                        localStorage.setItem("lu_token", res.token)
-                        navigate("/")
+                    if ("valid" in res && res.valid) {
+                        setToken(res.token)
                     }
+                    navigate("/login")
                 })
         } else {
             passwordDialog.current.showModal()
@@ -49,11 +55,15 @@ export const Register = () => {
                 <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
                 <fieldset>
                     <label htmlFor="firstName"> First Name </label>
-                    <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
+                    <input ref={firstName} type="text" name="email" className="form-control" placeholder="Email Address" required autoFocus />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="lastName"> Last Name </label>
                     <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="email"> Email</label>
+                    <input ref={email} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputUsername">Username</label>
@@ -68,8 +78,16 @@ export const Register = () => {
                     <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="verifyPassword"> Verify Password </label>
-                    <textarea ref={bio} name="bio" className="form-control" placeholder="Let other gamers know a little bit about you..." />
+                    <label htmlFor="inputBio"> Bio </label>
+                    <textarea ref={bio} name="bio" className="form-control" placeholder="Tell us a lil about yourself." />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="inputImgUrl"> Profile Pic </label>
+                    <input ref={imgUrl} type="text" name="imgUrl" className="form-control" placeholder="Paste your profile image URL here." />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="isStaff"> IMPORTANT: Are you a volunteer? </label>
+                    <input ref={isStaff} type="checkbox" name="isStaff" id="isStaff" />
                 </fieldset>
                 <fieldset style={{
                     textAlign: "center"
