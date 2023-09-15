@@ -1,13 +1,11 @@
-const getAuthHeaders = () => ({
-    "Authorization": `Token ${localStorage.getItem("auth_token")}`,
-    "Content-Type": "application/json"
-
-});
 
 export const getTags = () => {
+    
     return fetch("http://localhost:8000/tags", {
         method: "GET",
-        headers: getAuthHeaders()
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+        }
     })
         .then((response) =>{
             if (response.ok) {
