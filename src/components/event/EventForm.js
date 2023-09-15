@@ -161,31 +161,7 @@ export const EventForm = () => {
 
             </form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 )
-
-
-
-
-
-
-
-
-
-
-
 };
 
 

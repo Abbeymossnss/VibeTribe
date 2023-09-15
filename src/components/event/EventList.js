@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getEvents } from "../../managers/EventManager.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./EventList.css"
 
 
@@ -52,8 +52,11 @@ export const EventList = (props) => {
                                   {tag.label}
                               </span>
                           ))}
-                    <div></div>
-                    <button>edit</button><div></div>
+                          <div></div>
+                          {/* Add a "Edit" button that navigates to the edit event form */}
+                          <Link to={`/events/${event.id}`}>
+                              <button>Edit</button>
+                          </Link>
                           <div></div>
                     <button>delete</button>
                       </div>
