@@ -26,7 +26,7 @@ export const ApplicationViews = ({setToken}) => {
             <Route path="/register" element={<Register setToken={setToken} />} />
             <Route element={<Authorized />}>
             <Route path="/events" element={<EventList />} />
-            <Route path="/events/new/tags" element={<EventForm setToken={setToken} tags ={tags} />} />
+            <Route path="/events/new/" element={<EventForm setToken={setToken} tags ={tags} />} />
             </Route>
         </Routes>
     </>

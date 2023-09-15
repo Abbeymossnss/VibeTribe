@@ -2,12 +2,15 @@ import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
 import { createEvent } from "../../managers/EventManager"
 import { getTags } from "../../managers/TagManager"
+import "./EventForm.css"
 
 export const EventForm = () => {
  const navigate = useNavigate()
  const [eventTag, setEventTag] = useState([])
+  const [selectedTags, setSelectedTags] = useState([]);
 
  const [currentEvent, setCurrentEvent] = useState({
+    name: "",
     date: "",
     time: "",
     details: "",
@@ -25,14 +28,26 @@ export const EventForm = () => {
         });
     }, [])
 
-    const handleTagSelection = (selectedTagIds) => {
-        // Map the selected tag IDs to tag objects and update the state
-        const selectedTags = eventTag.filter((tag) => selectedTagIds.includes(tag.id));
-        setCurrentEvent((prevEvent) => ({
-            ...prevEvent,
-            tags: selectedTags,
-        }));
+    const handleTagSelection = (tagId) => {
+    // Check if the selected tagId is already in selectedTags
+    if (selectedTags.includes(tagId)) {
+        // If it's included, remove it
+        setSelectedTags(prevSelectedTags =>
+        prevSelectedTags.filter(id => id !== tagId)
+        );
+    } else {
+        // If it's not included, add it
+        setSelectedTags(prevSelectedTags => [...prevSelectedTags, tagId]);
+    }
+
+    // Update the currentEvent tags with the selectedTags
+    setCurrentEvent(prevEvent => ({
+        ...prevEvent,
+        tags: selectedTags
+    }));
     };
+
+    // ...
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -47,87 +62,130 @@ export const EventForm = () => {
                 // Handle errors, e.g., show an error message to the user
             });
     };
+
+    const changeEventState = (eventClick) => {
+
+        const newEventState = { ...currentEvent }
+        newEventState[eventClick.target.name] = eventClick.target.value
+        setCurrentEvent(newEventState)
+    }
+
+
+
     return (
-        <div>
-            <h2>Create New Event</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="date">Date:</label>
-                    <input
-                        type="date"
-                        id="date"
-                        name="date"
+        <form className="eventForm">
+            <h2 className="eventForm_title">Register Your Event</h2>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="name"> Name Your Event: </label>
+                    <input type="text" name="name" required autoFocus className="form-control"
+                        value={currentEvent.name}
+                        onChange={changeEventState}
+                    />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="date">Date of New Event: </label>
+                    <input type="date" name="date" required autoFocus className="form-control"
                         value={currentEvent.date}
-                        onChange={(e) =>
-                            setCurrentEvent({ ...currentEvent, date: e.target.value })
-                        }
-                        required
+                        onChange={changeEventState}
                     />
                 </div>
-                <div>
-                    <label htmlFor="time">Time:</label>
-                    <input
-                        type="time"
-                        id="time"
-                        name="time"
-                        value={currentEvent.time}
-                        onChange={(e) =>
-                            setCurrentEvent({ ...currentEvent, time: e.target.value })
-                        }
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="location">Location:</label>
-                    <input
-                        type="text"
-                        id="location"
-                        name="location"
-                        value={currentEvent.location}
-                        onChange={(e) =>
-                            setCurrentEvent({ ...currentEvent, location: e.target.value })
-                        }
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="details">Details:</label>
-                    <textarea
-                        id="details"
-                        name="details"
-                        value={currentEvent.details}
-                        onChange={(e) =>
-                            setCurrentEvent({ ...currentEvent, details: e.target.value })
-                        }
-                        required
-                    />
-                </div>
-                <div>
-                    <p>Tags:</p>
-                    {eventTag.map((tag) => (
-                        <label key={tag.id}>
-                            <input
-                                type="checkbox"
-                                value={tag.id}
-                                onChange={(e) => {
-                                    const selectedTagIds = e.target.checked
-                                        ? [...currentEvent.tags, parseInt(e.target.value)]
-                                        : currentEvent.tags.filter(
-                                            (id) => id !== parseInt(e.target.value)
-                                        );
-                                    handleTagSelection(selectedTagIds);
-                                }}
+            </fieldset>
+            <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="time">Time of New Event: </label>
+                        <input type="time" name="time" required autoFocus className="form-control"
+                            value={currentEvent.time}
+                            onChange={changeEventState}
                             />
-                            {tag.label}
-                        </label>
-                    ))}
+                    </div>
+                </fieldset>
+                            <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="location">Location: </label>
+                        <input type="text" name="location" required autoFocus className="form-control"
+                            value={currentEvent.location}
+                            onChange={changeEventState}
+                            />
+                    </div>
+                </fieldset>
+                            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="details"> Party Details: </label>
+                    <input type="text" name="details" required autoFocus className="form-control"
+                        value={currentEvent.details}
+                        onChange={changeEventState}
+                    />
                 </div>
-                <div>
-                    <button type="submit">Create Event</button>
-                </div>
-            </form>
+            </fieldset>
+                  <fieldset>
+        <div className="form-group">
+          <label>Tags:</label>
+          {eventTag.map((tag) => (
+            <div key={tag.id}>
+              <input
+                type="checkbox"
+                id={`tag-${tag.id}`}
+                value={tag.id}
+                checked={selectedTags.includes(tag.id)}
+                onChange={() => handleTagSelection(tag.id)}
+              />
+              <label htmlFor={`tag-${tag.id}`}>{tag.label}</label>
+            </div>
+          ))}
         </div>
-    );
+      </fieldset>
+                 <button type="submit"
+                onClick={evt => {
+                    // Prevent form from being submitted
+                    evt.preventDefault()
+
+                    const event = {
+                        name: currentEvent.name,
+                        date: currentEvent.date,
+                        time: currentEvent.time,
+                        details: currentEvent.details,
+                        location: currentEvent.location,
+                        tags: currentEvent.tags,
+
+
+                    }
+
+                    // Send POST request to your API
+                    createEvent(event)
+                        .then(() => navigate("/events"))
+                }}
+                className="btn btn-primary">Create</button>
+
+            </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+
+
+
+
+
+
+
+
+
+
+
 };
 
 

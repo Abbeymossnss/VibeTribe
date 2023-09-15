@@ -1,0 +1,38 @@
+.event {
+    border: 2px solid #e08c0c;
+    /* Add a 2px solid border with a custom color */
+    padding: 20px;
+    /* Add padding to create space around the content */
+    margin-bottom: 20px;
+    /* Add margin to separate event containers */
+    border-radius: 10px;
+    /* Add rounded corners for a box effect */
+    background-color: #fafafa;
+    /* Add a background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add a box shadow for depth */
+
+    /* Optional: Transition for hover effect */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Event container hover effect */
+.event:hover {
+    transform: scale(1.02);
+    /* Scale up slightly on hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    /* Add a stronger box shadow on hover */
+}
+
+/* Style the create event button */
+.create-event-button {
+    border-radius: 20px;
+    /* Add rounded corners */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* Change the font */
+    background-color: #fb8728;
+    /* Change the background color to your desired color */
+    color: #FFFFFF;
+    /* Change the text color */
+    /* Add any additional styles as needed */
+}
