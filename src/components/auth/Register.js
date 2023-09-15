@@ -27,7 +27,7 @@ export const Register = ({ setToken }) => {
                 "email": email.current.value,
                 "bio": bio.current.value,
                 "img_url": imgUrl.current.value,
-                "isStaff": isStaff.current.checked,
+                "is_staff": isStaff.current.checked,
                 "password": password.current.value
             }
 

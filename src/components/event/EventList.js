@@ -12,7 +12,7 @@ import "./EventList.css"
 
 // for tags.. import tags from tag manager. usestate..
 
-export const EventList = (props) => {
+export const EventList = ({isStaff}) => {
   const [events, setEvents] = useState([]);
   const [eventIdToDelete, setEventIdToDelete] = useState(null);
   const navigate = useNavigate()
@@ -58,16 +58,18 @@ export const EventList = (props) => {
   }, []);
 
 
-return (
+    return (
         <article className="events">
-            <button
-                className="btn btn-2 btn-sep icon-create create-event-button"
-                onClick={() => {
-                    navigate({ pathname: "/events/new" });
-                }}
-            >
-                Create a New Party Event!
-            </button>
+            {!isStaff && ( // Conditionally render the "Create" button if not staff
+                <button
+                    className="btn btn-2 btn-sep icon-create create-event-button"
+                    onClick={() => {
+                        navigate({ pathname: "/events/new" });
+                    }}
+                >
+                    Create a New Party Event!
+                </button>
+            )}
             {events.map((event) => (
                 <section key={`event--${event.id}`} className="event">
                     <div className="host">WHO? Hosted By: {event.host.full_name}</div>
@@ -82,14 +84,19 @@ return (
                                 {tag.label}
                             </span>
                         ))}
-                        {/* Add a "Edit" button that navigates to the edit event form */}
-                        <Link to={`/events/${event.id}`}>
-                            <button>Edit</button>
-                        </Link>
-                        <button onClick={() => handleDeleteEvent(event.id)}>Delete</button>
+                        {!isStaff && ( // Conditionally render the "Edit" and "Delete" buttons if not staff
+                            <>
+                                {/* Add an "Edit" button that navigates to the edit event form */}
+                                <Link to={`/events/${event.id}`}>
+                                    <button>Edit</button>
+                                </Link>
+                                <button onClick={() => handleDeleteEvent(event.id)}>Delete</button>
+                            </>
+                        )}
                     </div>
                 </section>
             ))}
         </article>
     );
+
 };
