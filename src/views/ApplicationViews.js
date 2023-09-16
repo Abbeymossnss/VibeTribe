@@ -16,12 +16,12 @@ export const ApplicationViews = ({ setToken, isStaff,setIsStaff }) => {
     return (
         <>
             <Routes>
-                <Route path="/login" element={<Login isStaff={isStaff} />} />
+                <Route path="/login" element={<Login setToken={setToken} isStaff={isStaff} setIsStaff={setIsStaff} />} />
                 <Route path="/register" element={<Register setToken={setToken} setIsStaff={setIsStaff} />} />
                 <Route element={<Authorized />}>
                     <Route path="/events" element={<EventList isStaff={isStaff} />} />
-                    <Route path="/events/new/" element={<EventForm setToken={setToken} tags={tags} isStaff={isStaff} />} />
-                    <Route path="/events/:eventId" element={<UpdateEvent setToken={setToken} tags={tags} isStaff={isStaff}/>} />
+                    <Route path="/events/new/" element={<EventForm  tags={tags} isStaff={isStaff} />} />
+                    <Route path="/events/:eventId" element={<UpdateEvent  tags={tags} isStaff={isStaff}/>} />
                 </Route>
             </Routes>
         </>

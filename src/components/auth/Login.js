@@ -4,7 +4,7 @@ import { loginUser } from "../../managers/AuthManager"
 import "./Auth.css"
 
 
-export const Login = () => {
+export const Login = ({ setIsStaff, setToken }) => {
     const username = useRef()
     const password = useRef()
     const invalidDialog = useRef()
@@ -19,8 +19,8 @@ export const Login = () => {
         loginUser(user)
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
-                    localStorage.setItem("auth_token", res.token)
-                    localStorage.setItem("is_staff", res.is_staff)
+                   setToken(res.token)
+                   setIsStaff(res.is_staff)
                     navigate("/")
                 }
                 else {

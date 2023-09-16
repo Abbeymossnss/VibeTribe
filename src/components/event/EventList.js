@@ -52,15 +52,15 @@ export const EventList = ({isStaff}) => {
     getEvents().then((data) => setEvents(data));
   }, []);
 
-// console.log(isStaff)
 
 
-const checkStaff = JSON.parse(localStorage.getItem("is_staff"));
-console.log(checkStaff);
+
+
+console.log(isStaff)
 
     return (
         <article className="events">
-            {checkStaff===false && ( // Conditionally render the "Create" button if not staff
+            {isStaff===false && ( // Conditionally render the "Create" button if not staff
                 <button
                     className="btn btn-2 btn-sep icon-create create-event-button"
                     onClick={() => {
@@ -84,7 +84,7 @@ console.log(checkStaff);
                                 {tag.label}
                             </span>
                         ))}
-                         {checkStaff===false && ( // Conditionally render the "Edit" and "Delete" buttons if not staff
+                         {isStaff===false &&  ( // Conditionally render the "Edit" and "Delete" buttons if not staff
                             <>
                                 {/* Add an "Edit" button that navigates to the edit event form */}
                                 <Link to={`/events/${event.id}`}>

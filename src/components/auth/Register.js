@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { registerUser } from "../../managers/AuthManager"
 import "./Auth.css"
 
-export const Register = ({ setToken }) => {
+export const Register = ({ setToken, setIsStaff}) => {
     const firstName = useRef();
     const lastName = useRef();
     const email = useRef();
@@ -35,6 +35,7 @@ export const Register = ({ setToken }) => {
                 .then((res) => {
                     if ("valid" in res && res.valid) {
                         setToken(res.token);
+                        setIsStaff(res.is_staff)
                         // Set the user object after successful registration
                         // setUser(newUser);
                     }
