@@ -4,7 +4,7 @@ export const getTags = () => {
     return fetch("http://localhost:8000/tags", {
         method: "GET",
         headers: {
-            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
     })
         .then((response) =>{

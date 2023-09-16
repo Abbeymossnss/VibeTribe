@@ -17,7 +17,8 @@ export const VibeTribe = () => {
     }
     return <>
         <NavBar token={token} setToken={setToken} />
-        <ApplicationViews token={token} setToken={setToken} isStaff={isStaff}/>
+        <ApplicationViews token={token} setToken={setToken} isStaff={isStaff} setIsStaff={setIsStaff} />
         
     </>
 }
+// setIsStaff={setIsStaff} in return later, invoke setIsStaff state.

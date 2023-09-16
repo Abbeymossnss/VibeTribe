@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import { createEvent } from "../../managers/EventManager"
 import { getTags } from "../../managers/TagManager"
 import "./EventForm.css"
