@@ -1,3 +1,4 @@
+
 export const loginUser = (user) => {
   return fetch("http://localhost:8000/login", {
     method: "POST",
@@ -21,3 +22,5 @@ export const registerUser = (user) => {
   })
     .then(res => res.json())
 }
+
+
