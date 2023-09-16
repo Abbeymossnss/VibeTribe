@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
 import { getEvents, deleteEvent } from "../../managers/EventManager.js";
 import { useNavigate, Link } from "react-router-dom";
 import "./EventList.css"
@@ -33,12 +33,7 @@ export const EventList = ({isStaff}) => {
 
         if (confirmDelete) {
             // Send a DELETE request to delete the event
-            fetch(`http://localhost:8000/events/${eventId}`, {
-                method: "DELETE",
-                headers: {
-                    "Authorization": `Token ${localStorage.getItem("lu_token")}`
-                }
-            })
+            deleteEvent(eventId)
                 .then((response) => {
                     if (response.ok) {
                         // Remove the deleted event from the state
@@ -57,10 +52,15 @@ export const EventList = ({isStaff}) => {
     getEvents().then((data) => setEvents(data));
   }, []);
 
+// console.log(isStaff)
+
+
+const checkStaff = JSON.parse(localStorage.getItem("is_staff"));
+console.log(checkStaff);
 
     return (
         <article className="events">
-            {!isStaff && ( // Conditionally render the "Create" button if not staff
+            {checkStaff===false && ( // Conditionally render the "Create" button if not staff
                 <button
                     className="btn btn-2 btn-sep icon-create create-event-button"
                     onClick={() => {
@@ -84,7 +84,7 @@ export const EventList = ({isStaff}) => {
                                 {tag.label}
                             </span>
                         ))}
-                        {!isStaff && ( // Conditionally render the "Edit" and "Delete" buttons if not staff
+                         {checkStaff===false && ( // Conditionally render the "Edit" and "Delete" buttons if not staff
                             <>
                                 {/* Add an "Edit" button that navigates to the edit event form */}
                                 <Link to={`/events/${event.id}`}>

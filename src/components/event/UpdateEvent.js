@@ -11,7 +11,7 @@ import "./UpdateEvent.css"
 // modify the checkbox rendering to set the 'checked' attribute based on whether a tag is in 'selectedTags'
 //  handle the checkbox changed to update 'selectedTags' when user makes selections.
 
-export const UpdateEvent = () => {
+export const UpdateEvent = ({isStaff}) => {
     const [eventTag, setEventTag] = useState([])
     const [selectedTags, setSelectedTags] = useState([]);
     const [currentEvent, setCurrentEvent] = useState({
@@ -61,7 +61,19 @@ export const UpdateEvent = () => {
         })
     }
 
+
+const checkStaff = JSON.parse(localStorage.getItem("is_staff"));
+console.log(checkStaff);
+
     return (
+        <>
+            {checkStaff===true && (
+                <div>
+                    <p>You're a volunteer, you really shouldn't meddle.</p>
+                    {/* You can render a message or redirect them to another page */}
+                </div>
+            )}
+            {checkStaff===false && (
         <form className="updateEventForm">
             <h2 className="updateEvent_title"> Edit Your Event</h2>
             <fieldset>
@@ -152,12 +164,12 @@ export const UpdateEvent = () => {
             className="btn btn-primary">Submit Changes!</button>
 
 </form>
-)
+)}
+</>
+    )
 }
 export default UpdateEvent;
-
-
-
+    
 {/* line 121 checks if tag is selected
 122 handles the checkbox change */}
 

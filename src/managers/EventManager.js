@@ -1,7 +1,7 @@
 export const getEvents = () => {
     return fetch("http://localhost:8000/events", {
         headers: {
-            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`,                  
         }
     })
         .then(response => response.json())
@@ -12,7 +12,8 @@ export const createEvent = (event) => {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`,
+                                        
         },
         body: JSON.stringify(event)
 
@@ -27,7 +28,7 @@ export const createEvent = (event) => {
 export const getSingleEvent = (id) => {
     return fetch(`http://localhost:8000/events/${id}`, {
         headers: {
-            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
     })
         .then(response => response.json())
@@ -38,7 +39,7 @@ export const EditEvent = (event) => {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
         },
         body: JSON.stringify(event)
     })
@@ -49,12 +50,7 @@ export const deleteEvent = (eventId) => {
     return fetch(`http://localhost:8000/events/${eventId}`, {
         method: "DELETE",
         headers: {
-            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to delete event");
-            }
-        });
 }

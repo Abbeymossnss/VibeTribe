@@ -3,37 +3,35 @@ import "./NavBar.css"
 
 export const NavBar = () => {
     const navigate = useNavigate()
-    return (
-        <ul className="navbar">
-            <li className="navbar__item" onClick={() => {
-                navigate('/events')
-            }}>
-                Events
-            </li>
-            <li className="navbar__item">
-                The Vibe Tribe!
-            </li>
-            <li className="navbar__item">
-                Get Help!
-            </li>
-            {
-                (localStorage.getItem("lu_token") !== null) ?
-                    <li className="nav-item">
-                        <button className="nav-link fakeLink"
-                            onClick={() => {
-                                localStorage.removeItem("lu_token")
-                                navigate('/login')
-                            }}
-                        >Logout</button>
-                    </li> :
+   return (
+        <>
+            <ul className="navbar">
+                {localStorage.getItem("auth_token") !== null ? (
                     <>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/login">Login</Link>
+                        <li className="navbar__item" onClick={() => navigate('/events')}>
+                            Events
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/register">Register</Link>
+                        <li className="navbar__item">
+                            The Vibe Tribe!
+                        </li>
+                        <li className="navbar__item">
+                            Get Help!
+                        </li>
+                        <li className="navbar__item">
+                            <button
+                                className="nav-link fakeLink"
+                                onClick={() => {
+                                    localStorage.removeItem("auth_token");
+                                    navigate('/login');
+                                }}
+                            >
+                                Logout
+                            </button>
                         </li>
                     </>
-            }        </ul>
-    )
+                ) : null}
+            </ul>
+        </>
+    );
 }
+
