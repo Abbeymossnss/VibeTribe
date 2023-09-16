@@ -10,12 +10,8 @@ import { getTags } from "../managers/TagManager";
 
 
 // Create a function to fetch user data
-
-export const ApplicationViews = ({ setToken }) => {
+export const ApplicationViews = ({ setToken, isStaff }) => {
     const [tags, setTags] = useState([]);
-    
-
-    // const isStaff = user.isStaff || false; // Default to false if isStaff is not available
 
     return (
         <>
