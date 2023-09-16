@@ -16,7 +16,7 @@ export const ApplicationViews = ({ setToken, isStaff }) => {
     return (
         <>
             <Routes>
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<Login isStaff={isStaff} />} />
                 <Route path="/register" element={<Register setToken={setToken} />} />
                 <Route element={<Authorized />}>
                     <Route path="/events" element={<EventList isStaff={isStaff} />} />
