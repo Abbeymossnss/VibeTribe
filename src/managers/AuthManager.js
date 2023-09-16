@@ -1,3 +1,4 @@
+
 export const loginUser = (user) => {
   return fetch("http://localhost:8000/login", {
     method: "POST",
@@ -22,17 +23,4 @@ export const registerUser = (user) => {
     .then(res => res.json())
 }
 
-// export const getUserInfo = () => {
-//   return fetch("http://localhost:8000/user-info", {
-//     method: "GET",
-//     headers: {
-//       "Authorization": `Token ${localStorage.getItem("lu_token")}`,
-//     },
-//   })
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error("Failed to get user info");
-//       }
-//       return response.json();
-//     });
-// };
+
