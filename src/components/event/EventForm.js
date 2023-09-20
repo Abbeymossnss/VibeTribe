@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useNavigate} from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { createEvent } from "../../managers/EventManager"
 import { getTags } from "../../managers/TagManager"
 import "./EventForm.css"
@@ -121,7 +121,7 @@ export const EventForm = () => {
                 </div>
             </fieldset>
                   <fieldset>
-        <div className="form-group">
+        <div className="form-group-">
           <label>Tags:</label>
           {eventTag.map((tag) => (
             <div key={tag.id}>
@@ -157,7 +157,7 @@ export const EventForm = () => {
                     createEvent(event)
                         .then(() => navigate("/events"))
                 }}
-                className="btn btn-primary">Create</button>
+                className="create-event-button">Create</button>
 
             </form>
 

@@ -3,7 +3,7 @@ import "./NavBar.css"
 
 export const NavBar = () => {
     const navigate = useNavigate()
-   return (
+    return (
         <>
             <ul className="navbar">
                 {localStorage.getItem("auth_token") !== null ? (
@@ -14,7 +14,7 @@ export const NavBar = () => {
                         <li className="navbar__item">
                             The Vibe Tribe!
                         </li>
-                        <li className="navbar__item">
+                        <li className="navbar__item" onClick={() => navigate('/tickets')}>
                             Get Help!
                         </li>
                         <li className="navbar__item">

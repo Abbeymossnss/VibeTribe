@@ -67,7 +67,7 @@ console.log(isStaff)
                         navigate({ pathname: "/events/new" });
                     }}
                 >
-                    Create a New Party Event!
+                    CREATE!
                 </button>
             )}
             {events.map((event) => (
