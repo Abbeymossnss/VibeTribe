@@ -36,7 +36,7 @@ export const TicketList = ({ isStaff }) => {
 
     return (
         <article className="tickets">
-            {isStaff === false && ( // Conditionally render the "Create" button if not staff
+            {/* {isStaff === false && ( // Conditionally render the "Create" button if not staff
                 <button
                     className="btn btn-2 btn-sep icon-create create-event-button"
                     onClick={() => {
@@ -45,12 +45,13 @@ export const TicketList = ({ isStaff }) => {
                 >
                     CREATE HELP TICKET
                 </button>
-            )}
+            )} */}
             {tickets.map((ticket) => (
                 <section key={`ticket--${ticket.id}`} className = "ticket">
                     <div className="title">HELP TICKET TITLE: {ticket.title} </div>
                     <div className="issue">ISSUE DETAILS: {ticket.issue}</div>
-                    <div className="creator">HOST THAT NEEDS HELP:{ticket.creator}</div>
+                    <div className="creator">HOST THAT NEEDS HELP:{ticket.creator.full_name}</div>
+                    <div classname="status">HELP TICKET STATUS:{ticket.status.type}</div>
 
 
                 </section>
