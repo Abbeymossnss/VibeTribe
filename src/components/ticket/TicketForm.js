@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from 'react-router-dom'
-import { getEvents, getTickets } from "../../managers/TicketManager"
-import { createTicket } from "../../managers/TicketManager"
+import { createTicket, getTickets } from "../../managers/TicketManager"
+import { getEvents } from "../../managers/EventManager"
 import "./ticketform.css"
 
 // gotta figure out how to import getEvents...for this ticket. create event state, useEffect to get event, then set state.!
@@ -28,15 +28,6 @@ export const TicketForm = (userId) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // Check if the selected event ID is valid
-        const selectedEventId = parseInt(currentTicket.event, 10);
-        const validEventIds = eventTicket.map((event) => event.id);
-
-        if (!validEventIds.includes(selectedEventId)) {
-            console.error("Invalid event ID");
-            return; // Prevent the POST request if the event ID is invalid
-        }
 
         // Call the createTicket function to submit the ticket data to the server
         createTicket(currentTicket)
@@ -85,7 +76,7 @@ export const TicketForm = (userId) => {
                     <select name="event" value={currentTicket.event} onChange={changeTicketState}>
                         <option value="" disabled>Select your event</option>
                         {eventTicket.map(event => (
-                            <option key={event.id} value={event.id}>{event.title}</option>
+                            <option key={event.id} value={event.id}>{event.name}</option>
                         ))}
                     </select>
                 </div>
