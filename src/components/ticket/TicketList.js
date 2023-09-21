@@ -1,15 +1,30 @@
-import React, { useEffect, useState, } from "react";
+import React, { useEffect, useState } from "react";
 import { getTickets, deleteTicket } from "../../managers/TicketManager.js";
 import { useNavigate, Link } from "react-router-dom";
+import "./ticketlist.css";
 
-export const TicketList = ({ isStaff }) => {
+export const TicketList = ({ isStaff, token }) => {
     const [tickets, setTickets] = useState([]);
     const [ticketIdToDelete, setTicketIdToDelete] = useState(null);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const listData = {
+        title: "",
+        issue: "",
+        creator: 0,
+        status: 0,
+        volunteer: 0,
+    };
+
+    if (listData.status === null) {
+        listData.status = 3;
+    }
 
     const handleDeleteTicket = (ticketId) => {
         // Display a confirmation dialog (you can use window.confirm)
-        const confirmDelete = window.confirm("Are you sure you want to delete this help ticket?");
+        const confirmDelete = window.confirm(
+            "Are you sure you want to delete this help ticket?"
+        );
 
         if (confirmDelete) {
             // Send a DELETE request to delete the event
@@ -32,60 +47,56 @@ export const TicketList = ({ isStaff }) => {
         getTickets().then((data) => setTickets(data));
     }, []);
 
-    console.log(isStaff)
+    console.log(isStaff);
+    console.log(token)
+
+    const userId = token ? token.user_id : null;
 
     return (
         <article className="tickets">
-            {/* {isStaff === false && ( // Conditionally render the "Create" button if not staff
+            {isStaff === false && ( // Conditionally render the "Create" button if not staff
                 <button
-                    className="btn btn-2 btn-sep icon-create create-event-button"
+                    className="create-event-button"
                     onClick={() => {
                         navigate({ pathname: "/tickets/new" });
                     }}
                 >
-                    CREATE HELP TICKET
+                    CREATE!
                 </button>
-            )} */}
+            )}
             {tickets.map((ticket) => (
-                <section key={`ticket--${ticket.id}`} className = "ticket">
-                    <div className="title">HELP TICKET TITLE: {ticket.title} </div>
-                    <div className="issue">ISSUE DETAILS: {ticket.issue}</div>
-                    <div className="creator">HOST THAT NEEDS HELP:{ticket.creator.full_name}</div>
-                    <div classname="status">HELP TICKET STATUS:{ticket.status.type}</div>
-
-
+                <section key={`ticket--${ticket.id}`} className="ticket">
+                    <div className="title">NAME OF CRISIS: {ticket.title} </div>
+                    <div className="ticketEvent">EVENT IN CRISIS: {ticket.event.name}</div>
+                    <div className="creator">
+                        HOST IN CRISIS: {ticket.creator.full_name}</div>
+                    <div className="issue">CRISIS DETAILS: {ticket.issue}</div>
+                    {ticket.status ? (
+                        <div className="status">TICKET STATUS: {ticket.status.type}</div>
+                    ) : (
+                        <div className="status">TICKET STATUS: Pending Volunteer Assignment</div>
+                    )}
+                    {ticket.volunteer ? (
+                        <div className="volunteer">VOLUNTEER PARTY SAVER: {ticket.volunteer.full_name}</div>
+                    ) : (
+                        <div className="volunteer">VOLUNTEER PARTY SAVER: Volunteer Not Assigned Yet...</div>
+                    )}
+                    <div>
+                        <Link to={`/tickets/${ticket.id}/edit`}>
+                            <button className="btn btn-primary">Edit</button>
+                        </Link>
+                        {/* Conditionally render the delete button for the creator of the ticket */}
+                        {userId=== ticket.creator.id && (
+                            <button
+                                onClick={() => handleDeleteTicket(ticket.id)}
+                                className="btn btn-danger"
+                            >
+                                Delete
+                            </button>
+                        )}
+                    </div>
                 </section>
-        
-        ))}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            ))}
         </article>
-
-    )
-
-}
+    );
+};

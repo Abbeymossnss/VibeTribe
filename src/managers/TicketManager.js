@@ -47,7 +47,7 @@ export const EditTicket = (ticket) => {
 }
 
 export const deleteTicket = (ticketId) => {
-    return fetch(`http://localhost:8000/events/${ticketId}`, {
+    return fetch(`http://localhost:8000/tickets/${ticketId}`, {
         method: "DELETE",
         headers: {
             "Authorization": `Token ${localStorage.getItem("auth_token")}`

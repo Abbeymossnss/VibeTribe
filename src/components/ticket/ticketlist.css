@@ -1,0 +1,42 @@
+.ticket {
+
+    border: 2px solid #e08c0c;
+    /* Add a 2px solid border with a custom color */
+    padding: 20px;
+    /* Add padding to create space around the content */
+    margin-bottom: 20px;
+    /* Add margin to separate event containers */
+    border-radius: 10px;
+    /* Add rounded corners for a box effect */
+    background-color: #fafafa;
+    /* Add a background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add a box shadow for depth */
+
+    /* Optional: Transition for hover effect */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Style the create button with neon colors and an outlined border */
+.create-event-button {
+    width: 200px;
+    height: 60px;
+    background: conic-gradient(from 0deg, #eaf01a, #d480fa, #fac24e, #eaf01a);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Your Cool Font', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #e7d400;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: trendyButton 3s ease-in-out infinite, neonColorChange 5s linear infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.create-event-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+

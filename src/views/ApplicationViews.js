@@ -11,7 +11,7 @@ import { getTags } from "../managers/TagManager";
 
 
 // Create a function to fetch user data
-export const ApplicationViews = ({ setToken, isStaff,setIsStaff }) => {
+export const ApplicationViews = ({ setToken, isStaff,setIsStaff,userId }) => {
     const [tags, setTags] = useState([]);
 
     return (
@@ -23,7 +23,7 @@ export const ApplicationViews = ({ setToken, isStaff,setIsStaff }) => {
                     <Route path="/events" element={<EventList isStaff={isStaff} />} />
                     <Route path="/events/new/" element={<EventForm  tags={tags} isStaff={isStaff} />} />
                     <Route path="/events/:eventId" element={<UpdateEvent  tags={tags} isStaff={isStaff}/>} />
-                    <Route path="/tickets" element={<TicketList isStaff={isStaff} />} />
+                    <Route path="/tickets" element={<TicketList isStaff={isStaff} userId={userId}/>} />
                 </Route>
             </Routes>
         </>
