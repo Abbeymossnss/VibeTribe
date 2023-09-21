@@ -34,6 +34,15 @@ export const getSingleTicket = (id) => {
         .then(response => response.json())
 }
 
+// export const getEventsCreatedByUser = (id) => {
+//     return fetch(`http://localhost:8000/events?user=${id}`, {
+//         headers: {
+//             "Authorization": `Token ${localStorage.getItem("auth_token")}`,
+//         }
+//     })
+//         .then(response => response.json())
+// }
+
 export const EditTicket = (ticket) => {
     return fetch(`http://localhost:8000/events/${ticket.id}`, {
         method: "PUT",

@@ -19,6 +19,8 @@ export const VibeTribe = () => {
     }
 
 
+    
+
     return <>
         <NavBar token={token} setToken={setToken} />
         <ApplicationViews token={token} setToken={setToken} isStaff={isStaff} setIsStaff={setIsStaff} />
