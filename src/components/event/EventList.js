@@ -59,10 +59,10 @@ export const EventList = ({isStaff}) => {
 console.log(isStaff)
 
     return (
-        <article className="events">
+        <article className="events1">
             {isStaff===false && ( // Conditionally render the "Create" button if not staff
                 <button
-                    className="btn btn-2 btn-sep icon-create create-event-button"
+                    className="create-event1-button"
                     onClick={() => {
                         navigate({ pathname: "/events/new" });
                     }}

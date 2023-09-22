@@ -1,38 +1,42 @@
-.event {
-    border: 2px solid #e08c0c;
-    /* Add a 2px solid border with a custom color */
-    padding: 20px;
-    /* Add padding to create space around the content */
-    margin-bottom: 20px;
-    /* Add margin to separate event containers */
-    border-radius: 10px;
-    /* Add rounded corners for a box effect */
-    background-color: #fafafa;
-    /* Add a background color */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Add a box shadow for depth */
-
-    /* Optional: Transition for hover effect */
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-/* Event container hover effect */
-.event:hover {
-    transform: scale(1.02);
-    /* Scale up slightly on hover */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    /* Add a stronger box shadow on hover */
-}
+/* Center everything on the page */
+.eventForm1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Align content to the left */
+    justify-content: center;
+    /* Center vertically */
+    text-align: center;
+    /* Align text to the left */
+    margin-left: 400px;
+        /* Add margin to push content to the right */
+    }
 
 /* Style the create event button */
-.create-event-button {
-    border-radius: 20px;
-    /* Add rounded corners */
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    /* Change the font */
-    background-color: #00db96;
-    /* Change the background color to your desired color */
+.create-event2-button {
+    width: 200px;
+    height: 60px;
+    background: conic-gradient(from 0deg, #FFA500, #FFFF00, #800080);
+    /* Orange to yellow to purple gradient */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Your Cool Font', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
     color: #FFFFFF;
-    /* Change the text color */
-    /* Add any additional styles as needed */
+    /* Text color */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: trendyButton 3s ease-in-out infinite, neonColorChange 5s linear infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center text horizontally and vertically */
+ 
+}
+
+.create-event2-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }

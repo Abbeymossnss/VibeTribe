@@ -73,10 +73,10 @@ export const EventForm = () => {
 
 
     return (
-        <form className="eventForm">
+        <form className="eventForm1">
             <h2 className="eventForm_title">Register Your Event</h2>
             <fieldset>
-                <div className="form-group">
+                <div className="form-group1">
                     <label htmlFor="name"> Name Your Event: </label>
                     <input type="text" name="name" required autoFocus className="form-control"
                         value={currentEvent.name}
@@ -85,7 +85,7 @@ export const EventForm = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="form-group">
+                <div className="form-group1">
                     <label htmlFor="date">Date of New Event: </label>
                     <input type="date" name="date" required autoFocus className="form-control"
                         value={currentEvent.date}
@@ -94,7 +94,7 @@ export const EventForm = () => {
                 </div>
             </fieldset>
             <fieldset>
-                    <div className="form-group">
+                    <div className="form-group1">
                         <label htmlFor="time">Time of New Event: </label>
                         <input type="time" name="time" required autoFocus className="form-control"
                             value={currentEvent.time}
@@ -103,7 +103,7 @@ export const EventForm = () => {
                     </div>
                 </fieldset>
                             <fieldset>
-                    <div className="form-group">
+                    <div className="form-group1">
                         <label htmlFor="location">Location: </label>
                         <input type="text" name="location" required autoFocus className="form-control"
                             value={currentEvent.location}
@@ -112,7 +112,7 @@ export const EventForm = () => {
                     </div>
                 </fieldset>
                             <fieldset>
-                <div className="form-group">
+                <div className="form-group1">
                     <label htmlFor="details"> Party Details: </label>
                     <input type="text" name="details" required autoFocus className="form-control"
                         value={currentEvent.details}
@@ -121,7 +121,7 @@ export const EventForm = () => {
                 </div>
             </fieldset>
                   <fieldset>
-        <div className="form-group-">
+        <div className="form-group1">
           <label>Tags:</label>
           {eventTag.map((tag) => (
             <div key={tag.id}>
@@ -157,7 +157,7 @@ export const EventForm = () => {
                     createEvent(event)
                         .then(() => navigate("/events"))
                 }}
-                className="create-event-button">Create</button>
+                className="create-event2-button">Create</button>
 
             </form>
 

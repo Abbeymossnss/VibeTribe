@@ -56,7 +56,7 @@ export const TicketList = ({ isStaff, token }) => {
         <article className="tickets">
             {isStaff === false && ( // Conditionally render the "Create" button if not staff
                 <button
-                    className="create-event-button"
+                    className="create-ticket1-button"
                     onClick={() => {
                         navigate({ pathname: "/tickets/new" });
                     }}

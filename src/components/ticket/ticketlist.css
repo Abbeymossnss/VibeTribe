@@ -17,26 +17,41 @@
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Style the create button with neon colors and an outlined border */
-.create-event-button {
+.create-ticket1-button {
     width: 200px;
     height: 60px;
-    background: conic-gradient(from 0deg, #eaf01a, #d480fa, #fac24e, #eaf01a);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 30px;
+    background: conic-gradient(from 0deg, #FFA500, #FFFF00);
+    /* Bright orange to yellow gradient */
+    border: none;
     outline: none;
     cursor: pointer;
     font-family: 'Your Cool Font', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 18px;
     font-weight: bold;
-    color: #e7d400;
+    color: #171710;
+    /* Text color */
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     animation: trendyButton 3s ease-in-out infinite, neonColorChange 5s linear infinite;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center text horizontally and vertically */
+    margin: 0 auto;
+    /* Center the button on the page */
+}
+
+.create-ticket1-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .create-event-button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
+.create-event-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 
+}
