@@ -82,7 +82,7 @@ export const TicketList = ({ isStaff, token }) => {
                         <div className="volunteer">VOLUNTEER PARTY SAVER: Volunteer Not Assigned Yet...</div>
                     )}
                     <div>
-                        <Link to={`/tickets/${ticket.id}/edit`}>
+                        <Link to={`/tickets/${ticket.id}`}>
                             <button className="btn btn-primary">Edit</button>
                         </Link>
                         {/* Conditionally render the delete button for the creator of the ticket */}

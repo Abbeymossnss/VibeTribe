@@ -6,7 +6,8 @@ import { EventList } from "../components/event/EventList";
 import { EventForm } from "../components/event/EventForm";
 import { UpdateEvent } from "../components/event/UpdateEvent";
 import { TicketList } from "../components/ticket/TicketList";
-import { TicketForm } from "../components/ticket/TicketForm"
+import { TicketForm } from "../components/ticket/TicketForm";
+import { UpdateTicket } from "../components/ticket/UpdateTicket";
 import { useState, useEffect } from "react";
 import { getTags } from "../managers/TagManager";
 
@@ -25,6 +26,7 @@ export const ApplicationViews = ({ setToken, isStaff,setIsStaff,userId }) => {
                     <Route path="/events/new/" element={<EventForm  tags={tags} isStaff={isStaff} />} />
                     <Route path="/events/:eventId" element={<UpdateEvent  tags={tags} isStaff={isStaff}/>} />
                     <Route path="/tickets" element={<TicketList isStaff={isStaff} userId={userId}/>} />
+                    <Route path="/tickets/:ticketId" element={<UpdateTicket isStaff={isStaff} userId={userId}/>} />
                     <Route path="tickets/new/" element={<TicketForm />} />
                 </Route>
             </Routes>
