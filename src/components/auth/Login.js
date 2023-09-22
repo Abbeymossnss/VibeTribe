@@ -1,33 +1,32 @@
-import React, { useRef } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { loginUser } from "../../managers/AuthManager"
-import "./Auth.css"
-
+import React, { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../../managers/AuthManager";
+import "./Auth.css";
 
 export const Login = ({ setIsStaff, setToken }) => {
-    const username = useRef()
-    const password = useRef()
-    const invalidDialog = useRef()
-    const navigate = useNavigate()
+    const username = useRef();
+    const password = useRef();
+    const invalidDialog = useRef();
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const user = {
             username: username.current.value,
-            password: password.current.value
-        }
+            password: password.current.value,
+        };
         loginUser(user)
-            .then(res => {
+            .then((res) => {
                 if ("valid" in res && res.valid && "token" in res) {
-                   setToken(res.token)
-                   setIsStaff(res.is_staff)
-                    navigate("/")
+                    setToken(res.token);
+                    setIsStaff(res.is_staff);
+                    // Navigate to the events page
+                    navigate("/events");
+                } else {
+                    invalidDialog.current.showModal();
                 }
-                else {
-                    invalidDialog.current.showModal()
-                }
-            })
-    }
+            });
+    };
 
     return (
         <main className="container--login">
@@ -52,12 +51,11 @@ export const Login = ({ setIsStaff, setToken }) => {
                     }}>
                         <button className="btn btn-1 btn-sep icon-send custom-button" type="submit">Let's Party</button>
                     </fieldset>
-                </form> {/* Close the <form> element here */}
+                </form>
                 <section className="link--register">
                     <Link to="/register">Not in The Vibe Tribe yet?</Link>
                 </section>
-            </section> {/* Close the <section> element here */}
+            </section>
         </main>
-    )
-
-}
+    );
+};

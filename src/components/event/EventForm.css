@@ -1,16 +1,47 @@
 /* Center everything on the page */
+.eventForm_title3 {
+    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+
 .eventForm1 {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    /* Align content to the left */
+    align-items: center;
+    /* Center content horizontally */
     justify-content: center;
-    /* Center vertically */
+    /* Center content vertically */
     text-align: center;
-    /* Align text to the left */
-    margin-left: 400px;
-        /* Add margin to push content to the right */
-    }
+    /* Center text horizontally */
+}
+
+        .form-group1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center content horizontally */
+            justify-content: center;
+            /* Center content vertically */
+            border: 2px solid #e08c0c;
+            width: 400px;
+            /* Adjust the width as needed */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: #ffff00;
+            /* Yellow background color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Adjust the width of the input fields */
+        .form-group1 input {
+            width: 100%;
+            /* Set the width to 100% for full width */
+        }
+
+
 
 /* Style the create event button */
 .create-event2-button {

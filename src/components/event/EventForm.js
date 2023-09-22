@@ -74,7 +74,7 @@ export const EventForm = () => {
 
     return (
         <form className="eventForm1">
-            <h2 className="eventForm_title">Register Your Event</h2>
+            <h2 className="eventForm_title3">Register Your Event</h2>
             <fieldset>
                 <div className="form-group1">
                     <label htmlFor="name"> Name Your Event: </label>

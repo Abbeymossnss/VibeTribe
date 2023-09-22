@@ -74,8 +74,8 @@ console.log(checkStaff);
                 </div>
             )}
             {checkStaff===false && (
-        <form className="updateEventForm">
-            <h2 className="updateEvent_title"> Edit Your Event</h2>
+        <form className="updateEventForm1">
+            <h2 className="updateEvent_title2"> Edit Your Event</h2>
             <fieldset>
                 <div className="updateForm-group">
                     <label htmlFor="name">Edit Event Name: </label>
@@ -161,7 +161,7 @@ console.log(checkStaff);
                         .then(() => navigate("/events"))
                 }
             }
-            className="btn btn-primary">Submit Changes!</button>
+            className="btn btn-primary2">Submit Changes!</button>
 
 </form>
 )}
